@@ -1,3 +1,4 @@
+import { FightsModule } from './fights/fights.module';
 import { AuthModule } from './auth/auth.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -14,6 +15,7 @@ import { ConfigModule } from '@nestjs/config/dist/config.module';
     MongooseModule.forRoot(process.env.DB_URL),
     UsersModule,
     AuthModule,
+    FightsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

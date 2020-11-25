@@ -13,9 +13,9 @@ export class AuthService {
     const user = await this.usersService.getByEmail(userEmail);
 
     if (user && user.password === userPassword) {
-      const { _id, name, email } = user;
+      const { _id, name, email, gold, characters } = user;
 
-      return { id: _id, name, email };
+      return { id: _id, name, email, gold, characters };
     }
 
     return null;
@@ -25,6 +25,10 @@ export class AuthService {
     const payload = { email: user.email, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
+      name: user.name,
+      email: user.email,
+      gold: user.gold,
+      characters: user.characters,
     };
   }
 }
