@@ -12,7 +12,9 @@ import { ConfigModule } from '@nestjs/config/dist/config.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(process.env.DB_URL),
+    MongooseModule.forRoot(
+      `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DATABASE}`,
+    ),
     UsersModule,
     AuthModule,
     FightsModule,
@@ -20,4 +22,4 @@ import { ConfigModule } from '@nestjs/config/dist/config.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

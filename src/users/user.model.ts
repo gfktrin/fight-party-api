@@ -2,7 +2,7 @@ import { Document } from 'mongoose';
 import { Character } from 'src/characters/character';
 import { Roles } from 'src/shared/enums/roles.enum';
 
-export class User extends Document {
+export interface User extends Document {
   id: string;
   name: string;
   email: string;
@@ -10,4 +10,5 @@ export class User extends Document {
   characters: Character[];
   gold: number;
   role: Roles;
+  validatePassword(password: string): boolean;
 }
