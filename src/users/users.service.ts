@@ -28,4 +28,20 @@ export class UsersService {
     await this.userModel.updateOne({ _id: id }, user).exec();
     return this.getById(id);
   }
+
+  async addCharacter(id: string, characterId: string) {
+    await this.userModel
+      .findOneAndUpdate(
+        { _id: id },
+        { $push: { characters: characterId } },
+        { new: true },
+        (err, result) => {
+          if (err) {
+            throw err;
+          }
+          return result;
+        },
+      )
+      .exec();
+  }
 }

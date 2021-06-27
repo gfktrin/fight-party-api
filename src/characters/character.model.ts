@@ -1,4 +1,6 @@
-export class Character {
+import { Document } from 'mongoose';
+
+export interface Character extends Document {
   id: string;
   name: string;
   hp: number;
