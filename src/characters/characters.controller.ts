@@ -12,6 +12,12 @@ export class CharactersController {
   constructor(private characterService: CharactersService) {}
 
   @UseGuards(JwtAuthGuard)
+  @Get(':id')
+  async getById(@Param('id') id: string): Promise<Character> {
+    return this.characterService.getById(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Post(':id')
   async create(
     @Param('id') id: string,

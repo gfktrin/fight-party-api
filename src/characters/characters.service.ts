@@ -11,6 +11,10 @@ export class CharactersService {
     private readonly usersService: UsersService,
   ) {}
 
+  async getById(id: string) {
+    return await this.characterModel.findById(id).exec();
+  }
+
   async create(id: string, name: string) {
     const newCharacter = new this.characterModel({ name });
     await newCharacter.save();
